@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Emp Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    table{
+        text-align: center;
+        margin-left: 180px;
+        }
+    body{
+        background-color: silver;
+        color: crimson;
+    }
+</style>
+</head>
+<body>
+<h2>Employee Details</h2>
+<table border="2">
+<thead>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Employee Full Name</th>
+                <th>Email ID</th>
+                <th>Gender</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+<tbody>
+    {% for emp_data in empdata %}
+        <tr>
+            <td>{{ emp_data.id }}</td>
+            <td>{{ emp_data.empname }}</td>
+            <td>{{ emp_data.email }}</td>
+            <td>{{ emp_data.gender }}</td>
+            <td><img src="{{ emp_data.image.url }}"></td>
+            <td>{{ emp_data.status }}</td>
+            <td>
+            <a href="{% url 'edit' emp_data.id %}">Edit</a>
+            <a href="{% url 'delete' emp_data.id %}">Delete</a>
+
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+<button><a href="\">Back</a></button>
+</body>
+</html>
